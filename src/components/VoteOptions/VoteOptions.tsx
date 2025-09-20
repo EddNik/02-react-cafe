@@ -1,0 +1,45 @@
+/* eslint-disable @typescript-eslint/no-unused-expressions */
+import css from "./VoteOptions.module.css";
+import type { VoteType } from "../../types/votes";
+
+interface VoteOptionsProps {
+  onVote: (type: VoteType) => void;
+  onReset: () => void;
+  canReset: boolean;
+}
+
+// interface Props {
+//   vote: VoteOptionsProps;
+// }
+
+export default function VoteOptions({
+  onVote,
+  onReset,
+  canReset,
+}: VoteOptionsProps) {
+  return (
+    <div className={css.container}>
+      <button
+        className={css.button}
+        onClick={() => {
+          onVote("good");
+          canReset;
+        }}
+      >
+        Good
+      </button>
+      <button className={css.button} onClick={() => onVote("neutral")}>
+        Neutral
+      </button>
+      <button className={css.button} onClick={() => onVote("bad")}>
+        Bad
+      </button>
+
+      {canReset && (
+        <button className={`${css.button} ${css.reset}`} onClick={onReset}>
+          Reset
+        </button>
+      )}
+    </div>
+  );
+}
