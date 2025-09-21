@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import css from "./App.module.css";
-import type { Votes } from "../../types/votes";
+import type { Votes, VoteType } from "../../types/votes";
 
 import CafeInfo from "../CafeInfo/CafeInfo";
 import VoteOptions from "../VoteOptions/VoteOptions";
@@ -20,7 +20,7 @@ export default function App() {
     ? Math.round((votes.good / totalVotes) * 100)
     : 0;
 
-  const updateVotes = (key: keyof Votes) => {
+  const updateVotes = (key: VoteType) => {
     setVotes({
       ...votes,
       [key]: votes[key] + 1,
@@ -53,14 +53,12 @@ export default function App() {
         <CafeInfo />
 
         <VoteOptions
-          voteClick={{
-            onVote: handleVote,
-            onReset: handleResetVotes,
-            canReset: totalVotes > 0,
+          onVote={handleVote}
+          onReset={handleResetVotes}
+          canReset={totalVotes > 0}
 
-            // Reset button visibility using useState
-            // canReset:canReset
-          }}
+          // Reset button visibility using useState
+          // canReset={canReset}
         />
 
         {/*умовний рендеринг компонентів залежно від значення totalVotes*/}

@@ -7,14 +7,11 @@ interface VoteOptionsProps {
   canReset: boolean;
 }
 
-interface Props {
-  voteClick: VoteOptionsProps;
-}
-
 export default function VoteOptions({
-  // Deep estructuring VoteOptionsProps from Props
-  voteClick: { onVote, onReset, canReset },
-}: Props) {
+  onVote,
+  onReset,
+  canReset,
+}: VoteOptionsProps) {
   return (
     <div className={css.container}>
       <button

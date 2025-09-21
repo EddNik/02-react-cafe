@@ -24,7 +24,7 @@ export default function VoteStats({
         Bad: <strong>{votes.bad}</strong>
       </p>
       <p className={styles.stat}>
-        totalVotes, totalVotes, Total: <strong>{totalVotes}</strong>
+        Total: <strong>{totalVotes}</strong>
       </p>
       <p className={styles.stat}>
         Positive: <strong>{positiveRate}%</strong>
