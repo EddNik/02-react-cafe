@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-expressions */
 import css from "./VoteOptions.module.css";
 import type { VoteType } from "../../types/votes";
 
@@ -8,22 +7,20 @@ interface VoteOptionsProps {
   canReset: boolean;
 }
 
-// interface Props {
-//   vote: VoteOptionsProps;
-// }
+interface Props {
+  voteClick: VoteOptionsProps;
+}
 
 export default function VoteOptions({
-  onVote,
-  onReset,
-  canReset,
-}: VoteOptionsProps) {
+  // Deep estructuring VoteOptionsProps from Props
+  voteClick: { onVote, onReset, canReset },
+}: Props) {
   return (
     <div className={css.container}>
       <button
         className={css.button}
         onClick={() => {
           onVote("good");
-          canReset;
         }}
       >
         Good
